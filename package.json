@@ -4,6 +4,7 @@
     "seed": "node -r dotenv/config ./scripts/seed.js",
     "build": "next build",
     "dev": "next dev",
+    "turbo": "next dev --turbo",
     "start": "next start"
   },
   "dependencies": {
