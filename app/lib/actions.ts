@@ -44,6 +44,7 @@ export async function updateInvoice(formData: FormData) {
   });
  
   const amountInCents = amount * 100;
+  console.log("amount in cents = ", amountInCents)
  
   await sql`
     UPDATE invoices
@@ -53,4 +54,9 @@ export async function updateInvoice(formData: FormData) {
  
   revalidatePath('/dashboard/invoices');
   redirect('/dashboard/invoices');
+}
+
+export async function deleteInvoice(id: string) {
+  await sql`DELETE FROM invoices WHERE id = ${id}`;
+  revalidatePath('/dashboard/invoices');
 }
