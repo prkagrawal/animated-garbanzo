@@ -20,6 +20,8 @@ const InvoiceSchema = z.object({
 });
 
 const CreateInvoice = InvoiceSchema.omit({ id: true, date: true });
+//const UpdateInvoice = InvoiceSchema.omit({ date: true });
+const UpdateInvoice = InvoiceSchema.omit({ id: true, date: true });
 
 // This is temporary until @types/react-dom is updated
 export type State = {
@@ -32,12 +34,17 @@ export type State = {
 };
  
 
-export async function createInvoice(prevState: State, formData: FormData) {
+export async function createInvoice(
+	prevState: State, 
+	formData: FormData
+  ) {
+  console.log("formData = ", formData)
   const validatedFields = CreateInvoice.safeParse({
     customerId: formData.get('customerId'),
     amount: formData.get('amount'),
     status: formData.get('status'),
   });
+  console.log("validatedfields = ", validatedFields)
   // If form validation fails, return errors early. Otherwise, continue.
   if (!validatedFields.success) {
     return {
@@ -66,18 +73,18 @@ export async function createInvoice(prevState: State, formData: FormData) {
   console.log( customerId, amount, status );
 }
 
-const UpdateInvoice = InvoiceSchema.omit({ date: true });
-
 export async function updateInvoice(
   id: string,
   prevState: State,
-  formData: FormData,
+  formData: FormData
 ) {
+  console.log("formData = ", formData)
   const validatedFields = UpdateInvoice.safeParse({
     customerId: formData.get('customerId'),
     amount: formData.get('amount'),
     status: formData.get('status'),
   });
+  console.log("validatedfields = ", validatedFields)
  
   if (!validatedFields.success) {
     return {
