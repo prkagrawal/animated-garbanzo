@@ -9,6 +9,10 @@ import {
   CardsSkeleton,
   LatestInvoicesSkeleton 
 } from '@/app/ui/skeletons';
+
+export const metadata: Metadata = {
+  title: 'Dashboard',
+};
  
 export default async function Page() {
   return (
