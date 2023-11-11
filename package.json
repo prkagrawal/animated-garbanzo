@@ -3,6 +3,7 @@
   "scripts": {
     "seed": "node -r dotenv/config ./scripts/seed.js",
     "build": "next build",
+    "build-docker": "docker build -t animated-garbanzo .",
     "dev": "next dev",
     "turbo": "next dev --turbo",
     "lint": "next lint",
